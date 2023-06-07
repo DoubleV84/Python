@@ -9,7 +9,7 @@ def main():
     count = 0
     
     pyautogui.keyDown("shift")
-    while count <= 10:
+    while count <= 100:
         pyautogui.typewrite("Chargement ")
         pyautogui.typewrite(str(count))
         pyautogui.press("%")
