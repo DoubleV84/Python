@@ -7,6 +7,16 @@ from supp_mdp import supprimer_mdp
 from afficher_mdp import afficher_mdp
 from recherche_mdp import recherche_mdp
 import time
+import os
+
+def charger_mots_de_passe():
+    mots_de_passe = []
+    if os.path.exists("mots_de_passe.txt"):
+        with open("mots_de_passe.txt", "r") as fichier:
+            for ligne in fichier:
+                service, mot_de_passe = ligne.strip().split(",")
+                mots_de_passe.append({"Service": service, "Mot_de_passe": mot_de_passe})
+    return mots_de_passe
 
 def main():
 
@@ -30,6 +40,7 @@ def main():
             print("Erreur veuillez entrer une valeur correcte !")
             time.sleep(1)
             
+    mots_de_passe = charger_mots_de_passe()
 
 if __name__ == '__main__':
     main()

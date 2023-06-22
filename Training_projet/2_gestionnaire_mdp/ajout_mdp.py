@@ -5,6 +5,12 @@ import time
 import random
 import string
 
+def sauvegarder_mots_de_passe(mots_de_passe):
+    with open("mots_de_passe.txt", "a") as fichier:
+        for mot_de_passe in mots_de_passe:
+            ligne = f"{mot_de_passe['Service']},{mot_de_passe['Mot_de_passe']}\n"
+            fichier.write(ligne)
+
 def generer_mot_de_passe(longueur):
     caracteres = string.ascii_letters + string.digits + string.punctuation
     mot_de_passe = ''.join(random.choice(caracteres) for _ in range(longueur))
@@ -32,6 +38,7 @@ def ajout_mdp(mots_de_passe):
     new_mot_de_passe = {"Service" : service,
                         "Mot_de_passe" : mot_de_passe}
     mots_de_passe.append(new_mot_de_passe)
+    sauvegarder_mots_de_passe(mots_de_passe)
     
     time.sleep(0.5)
     print(".")  
